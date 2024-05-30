@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "TipJar"
 include(":app")
 include(":core:local")
+include(":core:ui")
