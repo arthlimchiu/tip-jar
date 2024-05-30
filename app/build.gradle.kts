@@ -51,6 +51,7 @@ android {
 dependencies {
     implementation(project(":core:ui"))
     implementation(project(":feature:calculator"))
+    implementation(project(":feature:savedpayments"))
 
     implementation(libs.androidx.core.ktx)
 

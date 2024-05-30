@@ -9,8 +9,8 @@ const val CALCULATOR_ROUTE = "calculator_route"
 
 fun NavController.navigateToCalculator() = navigate(CALCULATOR_ROUTE)
 
-fun NavGraphBuilder.calculatorScreen() {
+fun NavGraphBuilder.calculatorScreen(onSavedPaymentsClick: () -> Unit) {
     composable(CALCULATOR_ROUTE) {
-        CalculatorRoute()
+        CalculatorRoute(onSavedPaymentsClick = onSavedPaymentsClick)
     }
 }
