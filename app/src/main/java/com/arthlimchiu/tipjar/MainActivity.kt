@@ -1,4 +1,4 @@
-package com.example.tipjar
+package com.arthlimchiu.tipjar
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
