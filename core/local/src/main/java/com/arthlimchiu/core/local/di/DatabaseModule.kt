@@ -1,7 +1,7 @@
-package com.example.tipjar.di
+package com.arthlimchiu.core.local.di
 
 import android.content.Context
-import com.example.tipjar.database.TipDatabase
+import com.arthlimchiu.core.local.TipDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,10 +16,7 @@ object DatabaseModule {
 
     @Singleton
     @Provides
-    fun providesTipDatabase(
-        @ApplicationContext context: Context
-    ): TipDatabase {
+    fun providesTipDatabase(@ApplicationContext context: Context): TipDatabase {
         return TipDatabase.getInstance(context)
     }
-
 }
