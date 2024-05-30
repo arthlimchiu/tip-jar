@@ -49,6 +49,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:ui"))
+    implementation(project(":feature:calculator"))
+
     implementation(libs.androidx.core.ktx)
 
     // Lifecycle
