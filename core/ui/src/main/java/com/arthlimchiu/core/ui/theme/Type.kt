@@ -19,14 +19,14 @@ val Typography = Typography(
     displayLarge = TextStyle(
         fontFamily = robotoFamily,
         fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
+        fontSize = 57.sp,
+        lineHeight = 64.sp,
+        letterSpacing = (-0.25).sp
     ),
     displayMedium = TextStyle(
         fontFamily = robotoFamily,
         fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
+        fontSize = 52.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
