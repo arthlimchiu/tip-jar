@@ -73,9 +73,7 @@ fun TipJarTextField(
                 }
 
                 Box(
-                    modifier = Modifier
-                        .padding(horizontal = 36.dp)
-                        .border(1.dp, Color.Red)
+                    modifier = Modifier.padding(horizontal = 36.dp)
                 ) {
                     innerTextField()
                 }
