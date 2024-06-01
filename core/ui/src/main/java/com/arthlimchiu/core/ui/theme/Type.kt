@@ -11,7 +11,8 @@ import com.arthlimchiu.core.ui.R
 val robotoFamily = FontFamily(
     Font(R.font.roboto_medium, FontWeight.Medium),
     Font(R.font.roboto_regular, FontWeight.Normal),
-    Font(R.font.roboto_regular, FontWeight.Bold),
+    Font(R.font.roboto_bold, FontWeight.Bold),
+    Font(R.font.roboto_black, FontWeight.Black),
 )
 
 // Set of Material typography styles to start with
@@ -67,10 +68,10 @@ val Typography = Typography(
     ),
     titleMedium = TextStyle(
         fontFamily = robotoFamily,
-        fontWeight = FontWeight.Bold,
-        fontSize = 18.sp,
+        fontWeight = FontWeight.Black,
+        fontSize = 16.sp,
         lineHeight = 24.0.sp,
-        letterSpacing = 0.2.sp,
+        letterSpacing = 0.0.sp,
     ),
     titleSmall = TextStyle(
         fontFamily = robotoFamily,
