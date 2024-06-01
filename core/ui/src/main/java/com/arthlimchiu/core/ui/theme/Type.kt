@@ -32,8 +32,8 @@ val Typography = Typography(
     ),
     displaySmall = TextStyle(
         fontFamily = robotoFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 36.sp,
+        fontWeight = FontWeight.Medium,
+        fontSize = 42.sp,
         lineHeight = 44.0.sp,
         letterSpacing = 0.0.sp,
     ),
@@ -81,7 +81,7 @@ val Typography = Typography(
     ),
     bodyLarge = TextStyle(
         fontFamily = robotoFamily,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Medium,
         fontSize = 16.sp,
         lineHeight = 24.0.sp,
         letterSpacing = 0.5.sp,

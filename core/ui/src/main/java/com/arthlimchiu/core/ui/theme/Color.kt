@@ -1,5 +1,7 @@
 package com.arthlimchiu.core.ui.theme
 
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
 val Primary40 = Color(0xFF000000)
@@ -18,3 +20,10 @@ val Surface98 = Color(0xFFf9f9f9)
 val OnSurface10 = Color(0xFF1b1b1b)
 val Background98 = Color(0xFFf9f9f9)
 val OnBackground10 = Color(0xFF1b1b1b)
+
+@Immutable
+data class TipJarColors(
+    val silverBack: Color = Color(0xFFCBCBCB)
+)
+
+val LocalTipJarColors = staticCompositionLocalOf { TipJarColors() }
