@@ -24,7 +24,9 @@ val OnBackground10 = Color(0xFF1b1b1b)
 @Immutable
 data class TipJarColors(
     val silverBack: Color = Color(0xFFCBCBCB),
-    val porpoise: Color = Color(0xFFDADADA)
+    val porpoise: Color = Color(0xFFDADADA),
+    val saffron: Color = Color(0xFFF27A0A),
+    val silverSpoon: Color = Color(0xFFD2D2D2)
 )
 
 val LocalTipJarColors = staticCompositionLocalOf { TipJarColors() }

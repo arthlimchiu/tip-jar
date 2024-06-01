@@ -40,11 +40,11 @@ fun TipJarTextField(
         value = value,
         onValueChange = { onValueChange(it) },
         modifier = modifier,
-        textStyle = MaterialTheme.typography.displaySmall.copy(textAlign = TextAlign.Center),
+        textStyle = textStyle,
         singleLine = singleLine,
         maxLines = maxLines,
         minLines = minLines,
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        keyboardOptions = keyboardOptions,
         decorationBox = { innerTextField ->
             Box(
                 modifier = Modifier
@@ -107,6 +107,7 @@ internal fun TipJarTextFieldPreview() {
                 prefix = "$",
                 suffix = "%",
                 singleLine = true,
+                textStyle = MaterialTheme.typography.displaySmall.copy(textAlign = TextAlign.Center),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
         }
