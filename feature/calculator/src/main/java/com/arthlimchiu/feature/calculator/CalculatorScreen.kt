@@ -36,8 +36,12 @@ internal fun CalculatorScreen(onSavedPaymentsClick: () -> Unit) {
                 .padding(innerPadding)
                 .padding(horizontal = 24.dp)
         ) {
-            AmountSection()
-            PeopleCountSection()
+            AmountSection(modifier = Modifier.fillMaxWidth())
+            PeopleCountSection(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 36.dp)
+            )
             TipPercentSection()
             TipBreakdownSection()
             TakePhotoSection()

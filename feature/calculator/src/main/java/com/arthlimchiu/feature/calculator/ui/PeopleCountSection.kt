@@ -14,10 +14,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 
 @Composable
-internal fun PeopleCountSection() {
+internal fun PeopleCountSection(
+    modifier: Modifier = Modifier
+) {
     var count by remember { mutableIntStateOf(0) }
 
-    Column(modifier = Modifier.fillMaxWidth()) {
+    Column(modifier = modifier) {
         Text("How many people?")
         Row(
             modifier = Modifier.fillMaxWidth(),

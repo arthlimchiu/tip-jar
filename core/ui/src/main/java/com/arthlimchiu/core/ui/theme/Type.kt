@@ -60,8 +60,8 @@ val Typography = Typography(
     ),
     titleLarge = TextStyle(
         fontFamily = robotoFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 22.sp,
+        fontWeight = FontWeight.Medium,
+        fontSize = 24.sp,
         lineHeight = 28.0.sp,
         letterSpacing = 0.0.sp,
     ),
@@ -84,7 +84,7 @@ val Typography = Typography(
         fontWeight = FontWeight.Medium,
         fontSize = 16.sp,
         lineHeight = 24.0.sp,
-        letterSpacing = 0.5.sp,
+        letterSpacing = 0.0.sp,
     ),
     bodyMedium = TextStyle(
         fontFamily = robotoFamily,
