@@ -50,7 +50,11 @@ internal fun CalculatorScreen(onSavedPaymentsClick: () -> Unit) {
                     .fillMaxWidth()
                     .padding(top = 36.dp)
             )
-            TipBreakdownSection()
+            TipBreakdownSection(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 36.dp)
+            )
             TakePhotoSection()
             Button(
                 onClick = { /*TODO*/ },
