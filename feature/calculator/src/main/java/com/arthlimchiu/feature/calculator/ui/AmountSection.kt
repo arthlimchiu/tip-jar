@@ -40,7 +40,6 @@ internal fun AmountSection(
                 .padding(top = 16.dp),
             placeholder = "100.00",
             prefix = "$",
-            suffix = "%",
             textStyle = MaterialTheme.typography.displaySmall.copy(textAlign = TextAlign.Center),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             singleLine = true
