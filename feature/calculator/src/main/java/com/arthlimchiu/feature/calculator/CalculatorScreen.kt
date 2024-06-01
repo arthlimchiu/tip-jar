@@ -55,10 +55,16 @@ internal fun CalculatorScreen(onSavedPaymentsClick: () -> Unit) {
                     .fillMaxWidth()
                     .padding(top = 36.dp)
             )
-            TakePhotoSection()
+            TakePhotoSection(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 72.dp)
+            )
             Button(
                 onClick = { /*TODO*/ },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 24.dp)
             ) {
                 Text("Save payment")
             }

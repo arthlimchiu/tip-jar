@@ -1,4 +1,4 @@
-package com.arthlimchiu.core.ui
+package com.arthlimchiu.core.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
