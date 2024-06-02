@@ -162,7 +162,8 @@ internal fun CalculatorScreen(
                 onClick = onSavePaymentClick,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 24.dp)
+                    .padding(top = 24.dp),
+                enabled = amount.isNotBlank()
             )
         }
     }
