@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.arthlimchiu.core.data"
+    namespace = "com.arthlimchiu.core.common"
     compileSdk = 34
 
     defaultConfig {
@@ -29,9 +29,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:local"))
-    implementation(project(":core:model"))
-    implementation(project(":core:common"))
 
     // Hilt
     implementation(libs.hilt.android)
