@@ -6,6 +6,7 @@ import com.arthlimchiu.core.data.PaymentsRepository
 import com.arthlimchiu.core.model.Payment
 import com.arthlimchiu.feature.calculator.calculatorparser.CalculatorParser
 import com.arthlimchiu.feature.calculator.tipcalculator.TipCalculator
+import com.arthlimchiu.utils.date.ext.toDefaultFormat
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -78,7 +79,7 @@ internal class CalculatorViewModel @Inject constructor(
     fun onSavePaymentClick() {
         viewModelScope.launch {
             val payment = Payment(
-                timeStamp = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
+                timeStamp = LocalDateTime.now().toDefaultFormat(),
                 totalAmountInCents = calculatorFormatter.convertToCents(_uiState.value.amount),
                 totalTipInCents = calculatorFormatter.convertToCents(_uiState.value.totalTip)
             )
