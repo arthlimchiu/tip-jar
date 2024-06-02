@@ -1,8 +1,9 @@
 package com.arthlimchiu.feature.calculator.tipcalculator
 
 import java.math.BigDecimal
+import javax.inject.Inject
 
-class TipCalculator {
+class TipCalculator @Inject constructor() {
 
     fun computeTotalTip(tipPerPerson: BigDecimal, numOfPeople: Int): BigDecimal {
         return try {

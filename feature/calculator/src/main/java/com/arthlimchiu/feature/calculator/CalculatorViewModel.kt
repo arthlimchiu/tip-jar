@@ -4,8 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.arthlimchiu.core.data.PaymentsRepository
 import com.arthlimchiu.core.model.Payment
-import com.arthlimchiu.feature.calculator.calculatorparser.CalculatorParser
 import com.arthlimchiu.feature.calculator.tipcalculator.TipCalculator
+import com.arthlimchiu.utils.bigdecimal.ext.parseStringToBigDecimal
+import com.arthlimchiu.utils.bigdecimal.ext.parseBigDecimalToString
+import com.arthlimchiu.utils.bigdecimal.ext.parseStringToBigDecimalString
+import com.arthlimchiu.utils.currency.ext.convertToCents
 import com.arthlimchiu.utils.date.ext.toDefaultFormat
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,31 +18,19 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 @HiltViewModel
 internal class CalculatorViewModel @Inject constructor(
-    private val paymentsRepository: PaymentsRepository
+    private val paymentsRepository: PaymentsRepository,
+    private val calculator: TipCalculator
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(UiState())
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
-    private val calculator = TipCalculator()
-    private val calculatorFormatter = CalculatorParser()
-
-    init {
-        _uiState.update { state ->
-            state.copy(
-                totalTip = calculatorFormatter.parseToStringWithPattern(BigDecimal.ZERO),
-                tipPerPerson = calculatorFormatter.parseToStringWithPattern(BigDecimal.ZERO)
-            )
-        }
-    }
-
     fun onAmountChange(amount: String) {
-        _uiState.update { state -> state.copy(amount = calculatorFormatter.parseToString(amount)) }
+        _uiState.update { state -> state.copy(amount = amount.parseStringToBigDecimalString()) }
         calculateTotals()
     }
 
@@ -49,16 +40,16 @@ internal class CalculatorViewModel @Inject constructor(
     }
 
     fun onTipPercentageChange(tipPercentage: String) {
-        _uiState.update { state -> state.copy(tipPercentage = calculatorFormatter.parseToString(tipPercentage)) }
+        _uiState.update { state -> state.copy(tipPercentage = tipPercentage.parseStringToBigDecimalString()) }
         calculateTotals()
     }
 
     private fun calculateTotals() {
         val tipPerPerson = calculator.computeTipPerPerson(
-            totalAmount = calculatorFormatter.parseToBigDecimal(_uiState.value.amount),
-            tipPercentage = calculatorFormatter.parseToBigDecimal(_uiState.value.tipPercentage)
+            totalAmount = _uiState.value.amount.parseStringToBigDecimal(),
+            tipPercentage = _uiState.value.tipPercentage.parseStringToBigDecimal()
         )
-        val tipPerPersonFormatted = calculatorFormatter.parseToStringWithPattern(tipPerPerson)
+        val tipPerPersonFormatted = tipPerPerson.parseBigDecimalToString()
         _uiState.update { state -> state.copy(tipPerPerson = tipPerPersonFormatted) }
         computeTotalTip(tipPerPerson)
     }
@@ -68,7 +59,7 @@ internal class CalculatorViewModel @Inject constructor(
             tipPerPerson = tipPerPerson,
             numOfPeople = _uiState.value.numOfPeople
         )
-        val totalTipFormatted = calculatorFormatter.parseToStringWithPattern(totalTip)
+        val totalTipFormatted = totalTip.parseBigDecimalToString()
         _uiState.update { state -> state.copy(totalTip = totalTipFormatted) }
     }
 
@@ -77,11 +68,19 @@ internal class CalculatorViewModel @Inject constructor(
     }
 
     fun onSavePaymentClick() {
+        if (_uiState.value.takePhoto) {
+            // TODO: Launch camera
+        } else {
+            savePayment()
+        }
+    }
+
+    private fun savePayment() {
         viewModelScope.launch {
             val payment = Payment(
                 timeStamp = LocalDateTime.now().toDefaultFormat(),
-                totalAmountInCents = calculatorFormatter.convertToCents(_uiState.value.amount),
-                totalTipInCents = calculatorFormatter.convertToCents(_uiState.value.totalTip)
+                totalAmountInCents = _uiState.value.amount.parseStringToBigDecimal().convertToCents(),
+                totalTipInCents = _uiState.value.totalTip.parseStringToBigDecimal().convertToCents()
             )
 
             paymentsRepository.savePayment(payment)

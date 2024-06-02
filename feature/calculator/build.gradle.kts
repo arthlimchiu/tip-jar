@@ -39,6 +39,8 @@ dependencies {
     implementation(project(":core:model"))
     implementation(project(":core:ui"))
     implementation(project(":utils:date"))
+    implementation(project(":utils:currency"))
+    implementation(project(":utils:bigdecimal"))
 
     // Lifecycle
     implementation(libs.androidx.lifecycle.runtime.compose)
