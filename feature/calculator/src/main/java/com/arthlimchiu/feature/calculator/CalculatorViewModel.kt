@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.arthlimchiu.core.data.PaymentsRepository
 import com.arthlimchiu.core.model.Payment
 import com.arthlimchiu.feature.calculator.tipcalculator.TipCalculator
-import com.arthlimchiu.utils.bigdecimal.ext.parseStringToBigDecimal
 import com.arthlimchiu.utils.bigdecimal.ext.parseBigDecimalToString
+import com.arthlimchiu.utils.bigdecimal.ext.parseStringToBigDecimal
 import com.arthlimchiu.utils.bigdecimal.ext.parseStringToBigDecimalString
 import com.arthlimchiu.utils.currency.ext.convertToCents
 import com.arthlimchiu.utils.date.ext.toDefaultFormat
@@ -67,23 +67,21 @@ internal class CalculatorViewModel @Inject constructor(
         _uiState.update { state -> state.copy(takePhoto = takePhoto) }
     }
 
-    fun onSavePaymentClick() {
-        if (_uiState.value.takePhoto) {
-            // TODO: Launch camera
-        } else {
-            savePayment()
-        }
-    }
-
-    private fun savePayment() {
+    fun savePayment(imgPath: String = "") {
         viewModelScope.launch {
             val payment = Payment(
                 timeStamp = LocalDateTime.now().toDefaultFormat(),
                 totalAmountInCents = _uiState.value.amount.parseStringToBigDecimal().convertToCents(),
-                totalTipInCents = _uiState.value.totalTip.parseStringToBigDecimal().convertToCents()
+                totalTipInCents = _uiState.value.totalTip.parseStringToBigDecimal().convertToCents(),
+                imgPath = imgPath
             )
 
             paymentsRepository.savePayment(payment)
+            onPaymentSaved()
         }
+    }
+
+    private fun onPaymentSaved() {
+        _uiState.value = UiState()
     }
 }

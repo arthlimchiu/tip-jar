@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface PaymentDao {
 
-    @Query("SELECT * FROM payment")
+    @Query("SELECT * FROM payment ORDER by id DESC")
     fun getAll(): Flow<List<PaymentEntity>>
 
     @Insert

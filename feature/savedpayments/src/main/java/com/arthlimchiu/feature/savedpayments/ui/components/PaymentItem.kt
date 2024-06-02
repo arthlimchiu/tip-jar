@@ -1,7 +1,7 @@
 package com.arthlimchiu.feature.savedpayments.ui.components
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
+import android.net.Uri
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,19 +14,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.arthlimchiu.core.ui.theme.TipJarTheme
 
 @Composable
 internal fun PaymentItem(
     date: String,
     totalAmount: String,
-    totalTip: String
+    totalTip: String,
+    imgUriPath: String,
+    onClick: () -> Unit
 ) {
     Row(
         modifier = Modifier
+            .clickable { if (imgUriPath.isNotBlank()) onClick() }
             .fillMaxWidth()
             .padding(16.dp)
     ) {
@@ -55,12 +59,14 @@ internal fun PaymentItem(
                 )
             }
         }
-        Box(
+        AsyncImage(
+            model = Uri.parse(imgUriPath),
+            contentDescription = null,
             modifier = Modifier
                 .clip(MaterialTheme.shapes.medium)
-                .background(Color.LightGray)
                 .size(56.dp)
-                .align(Alignment.CenterVertically)
+                .align(Alignment.CenterVertically),
+            contentScale = ContentScale.Crop
         )
     }
 }
@@ -73,7 +79,9 @@ internal fun PaymentItemPreview() {
             PaymentItem(
                 date = "2021 January 21",
                 totalAmount = "$205.23",
-                totalTip = "Tip: $20.52"
+                totalTip = "Tip: $20.52",
+                imgUriPath = "",
+                onClick = {}
             )
         }
     }
