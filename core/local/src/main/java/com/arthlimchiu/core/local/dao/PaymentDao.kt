@@ -13,5 +13,5 @@ interface PaymentDao {
     fun getAll(): Flow<List<PaymentEntity>>
 
     @Insert
-    fun insertPayment(payment: PaymentEntity)
+    suspend fun insertPayment(payment: PaymentEntity)
 }

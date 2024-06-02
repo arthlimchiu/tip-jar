@@ -18,5 +18,5 @@ class PaymentsLocalSourceImpl @Inject constructor(
             payments.map { it.asExternal() }
         }
 
-    override fun savePayment(payment: Payment) = paymentDao.insertPayment(payment.asEntity())
+    override suspend fun savePayment(payment: Payment) = paymentDao.insertPayment(payment.asEntity())
 }

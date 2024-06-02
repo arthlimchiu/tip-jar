@@ -1,11 +1,11 @@
-package com.arthlimchiu.core.local
+package com.arthlimchiu.core.data
 
 import com.arthlimchiu.core.model.Payment
 import kotlinx.coroutines.flow.Flow
 
-interface PaymentsLocalSource {
+interface PaymentsRepository {
 
-    fun getPayments(): Flow<List<Payment>>
+    suspend fun getPayments(): Flow<List<Payment>>
 
     suspend fun savePayment(payment: Payment)
 }
