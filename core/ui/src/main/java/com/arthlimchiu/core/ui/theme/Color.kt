@@ -28,7 +28,9 @@ data class TipJarColors(
     val saffron: Color = Color(0xFFF27A0A),
     val marmalade: Color = Color(0xFFD26E11),
     val silverSpoon: Color = Color(0xFFD2D2D2),
-    val coldMorning: Color = Color(0xFFE5E5E5)
+    val coldMorning: Color = Color(0xFFE5E5E5),
+    val charcoal: Color = Color(0xFF7D7D7D),
+    val mercury: Color = Color(0xFFEBEBEB)
 )
 
 val LocalTipJarColors = staticCompositionLocalOf { TipJarColors() }

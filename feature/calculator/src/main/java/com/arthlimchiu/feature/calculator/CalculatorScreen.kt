@@ -22,7 +22,7 @@ import com.arthlimchiu.feature.calculator.ui.PeopleCountSection
 import com.arthlimchiu.feature.calculator.ui.TakePhotoSection
 import com.arthlimchiu.feature.calculator.ui.TipBreakdownSection
 import com.arthlimchiu.feature.calculator.ui.TipPercentSection
-import com.arthlimchiu.feature.calculator.ui.components.CalculatorTopBar
+import com.arthlimchiu.feature.calculator.ui.components.TopBar
 
 @Composable
 internal fun CalculatorRoute(
@@ -64,7 +64,7 @@ internal fun CalculatorScreen(
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = { CalculatorTopBar(onPaymentsHistoryClick = onPaymentsHistoryClick) }
+        topBar = { TopBar(onPaymentsHistoryClick = onPaymentsHistoryClick) }
     ) { innerPadding ->
         Column(
             modifier = Modifier

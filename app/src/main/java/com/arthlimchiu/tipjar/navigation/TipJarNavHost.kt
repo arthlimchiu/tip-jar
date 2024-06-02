@@ -22,6 +22,6 @@ fun TipJarNavHost(
         modifier = modifier
     ) {
         calculatorScreen(onSavedPaymentsClick = navController::navigateToSavedPayments)
-        savedPaymentsScreen()
+        savedPaymentsScreen(onBackClick = navController::popBackStack)
     }
 }

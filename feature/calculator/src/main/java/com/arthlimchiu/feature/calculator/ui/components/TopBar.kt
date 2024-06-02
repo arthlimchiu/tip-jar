@@ -15,7 +15,7 @@ import com.arthlimchiu.core.ui.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun CalculatorTopBar(onPaymentsHistoryClick: () -> Unit) {
+internal fun TopBar(onPaymentsHistoryClick: () -> Unit) {
     CenterAlignedTopAppBar(
         title = {
             Image(

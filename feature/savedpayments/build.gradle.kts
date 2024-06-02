@@ -35,6 +35,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:data"))
+    implementation(project(":core:model"))
     implementation(project(":core:ui"))
 
     // Lifecycle
@@ -53,4 +55,5 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.navigation.compose)
+    debugImplementation(libs.androidx.ui.tooling)
 }
