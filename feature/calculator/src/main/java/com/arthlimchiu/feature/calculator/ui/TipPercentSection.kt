@@ -13,6 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -20,9 +21,11 @@ import com.arthlimchiu.core.ui.components.TipJarTextField
 
 @Composable
 internal fun TipPercentSection(
+    tipPercentage: String,
+    onTipPercentageChange: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var percent by remember { mutableStateOf("") }
+    var tipPercentageTextFieldValue by remember { mutableStateOf(TextFieldValue(tipPercentage)) }
 
     Column(modifier = modifier) {
         Text(
@@ -31,8 +34,17 @@ internal fun TipPercentSection(
         )
 
         TipJarTextField(
-            value = percent,
-            onValueChange = { percent = it },
+            value = tipPercentageTextFieldValue.text,
+            onValueChange = { newValue ->
+                val filteredValue = if (newValue.count { it == '.' } > 1) {
+                    val index = newValue.lastIndexOf('.')
+                    newValue.substring(0, index) + newValue.substring(index + 1)
+                } else {
+                    newValue.filter { it.isDigit() || it == '.' }
+                }
+                onTipPercentageChange(filteredValue)
+                tipPercentageTextFieldValue = TextFieldValue(filteredValue)
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp),

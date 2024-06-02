@@ -28,10 +28,10 @@ import com.arthlimchiu.core.ui.theme.TipJarTheme
 
 @Composable
 internal fun PeopleCountSection(
+    numOfPeople: Int,
+    onNumOfPeopleChange: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var count by remember { mutableIntStateOf(0) }
-
     Column(modifier = modifier) {
         Text(
             text = "How many people?",
@@ -47,7 +47,7 @@ internal fun PeopleCountSection(
             val buttonBorderColor = TipJarTheme.colors.silverSpoon
 
             Button(
-                onClick = { count++ },
+                onClick = { onNumOfPeopleChange(numOfPeople + 1) },
                 modifier = Modifier
                     .widthIn(min = 72.dp)
                     .drawBehind {
@@ -65,7 +65,7 @@ internal fun PeopleCountSection(
                 )
             }
             Text(
-                text = count.toString(),
+                text = numOfPeople.toString(),
                 modifier = Modifier
                     .weight(1f)
                     .align(Alignment.CenterVertically)
@@ -74,7 +74,7 @@ internal fun PeopleCountSection(
                 style = MaterialTheme.typography.displaySmall,
             )
             Button(
-                onClick = { count-- },
+                onClick = { onNumOfPeopleChange(numOfPeople - 1) },
                 modifier = Modifier
                     .widthIn(min = 72.dp)
                     .drawBehind {
@@ -100,7 +100,10 @@ internal fun PeopleCountSection(
 internal fun PeopleCountSectionPreview() {
     TipJarTheme {
         Surface {
-            PeopleCountSection()
+            PeopleCountSection(
+                numOfPeople = 0,
+                onNumOfPeopleChange = {}
+            )
         }
     }
 }

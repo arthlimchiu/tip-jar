@@ -1,5 +1,6 @@
 package com.arthlimchiu.feature.calculator.ui
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -14,6 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -22,9 +24,11 @@ import com.arthlimchiu.core.ui.theme.TipJarTheme
 
 @Composable
 internal fun AmountSection(
+    amount: String,
+    onAmountChange: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var amount: String by remember { mutableStateOf("") }
+    var amountTextFieldValue by remember { mutableStateOf(TextFieldValue(amount)) }
 
     Column(modifier = modifier) {
         Text(
@@ -33,8 +37,17 @@ internal fun AmountSection(
         )
 
         TipJarTextField(
-            value = amount,
-            onValueChange = { amount = it },
+            value = amountTextFieldValue.text,
+            onValueChange = { newAmount ->
+                val filteredAmount = if (newAmount.count { it == '.' } > 1) {
+                    val index = newAmount.lastIndexOf('.')
+                    newAmount.substring(0, index) + newAmount.substring(index + 1)
+                } else {
+                    newAmount.filter { it.isDigit() || it == '.' }
+                }
+                onAmountChange(filteredAmount)
+                amountTextFieldValue = TextFieldValue(filteredAmount)
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp),
@@ -52,7 +65,10 @@ internal fun AmountSection(
 fun AmountSectionPreview() {
     TipJarTheme {
         Surface {
-            AmountSection()
+            AmountSection(
+                amount = "",
+                onAmountChange = {},
+            )
         }
     }
 }
