@@ -59,4 +59,8 @@ internal class CalculatorViewModel : ViewModel() {
         val totalTipFormatted = calculatorFormatter.parseToStringWithPattern(totalTip)
         _uiState.update { state -> state.copy(totalTip = totalTipFormatted) }
     }
+
+    fun onTakePhotoChecked(takePhoto: Boolean) {
+        _uiState.update { state -> state.copy(takePhoto = takePhoto) }
+    }
 }

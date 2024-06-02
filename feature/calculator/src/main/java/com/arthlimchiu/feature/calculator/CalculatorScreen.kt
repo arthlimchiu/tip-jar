@@ -40,6 +40,8 @@ internal fun CalculatorRoute(
         onTipPercentageChange = { tipPercentage -> viewModel.onTipPercentageChange(tipPercentage) },
         totalTip = uiState.totalTip,
         tipPerPerson = uiState.tipPerPerson,
+        takePhoto = uiState.takePhoto,
+        onTakePhotoChecked = { takePhoto -> viewModel.onTakePhotoChecked(takePhoto) },
         onSavedPaymentsClick = onSavedPaymentsClick
     )
 }
@@ -54,6 +56,8 @@ internal fun CalculatorScreen(
     onTipPercentageChange: (String) -> Unit,
     totalTip: String,
     tipPerPerson: String,
+    takePhoto: Boolean,
+    onTakePhotoChecked: (Boolean) -> Unit,
     onSavedPaymentsClick: () -> Unit
 ) {
     Scaffold(
@@ -93,6 +97,8 @@ internal fun CalculatorScreen(
                     .padding(top = 36.dp)
             )
             TakePhotoSection(
+                takePhoto = takePhoto,
+                onTakePhotoChecked = onTakePhotoChecked,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 72.dp)
@@ -122,6 +128,8 @@ internal fun CalculatorScreenPreview() {
                 onTipPercentageChange = {},
                 totalTip = "",
                 tipPerPerson = "",
+                takePhoto = true,
+                onTakePhotoChecked = {},
                 onSavedPaymentsClick = {}
             )
         }
