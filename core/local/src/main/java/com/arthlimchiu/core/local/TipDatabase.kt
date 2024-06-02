@@ -4,9 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.arthlimchiu.core.local.dao.PaymentDao
+import com.arthlimchiu.core.local.model.PaymentEntity
 
-@Database(version = 1, exportSchema = false)
+@Database(
+    entities = [PaymentEntity::class],
+    version = 1,
+    exportSchema = false
+)
 abstract class TipDatabase : RoomDatabase() {
+
+    abstract fun paymentDao(): PaymentDao
 
     companion object {
 

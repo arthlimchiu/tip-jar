@@ -29,6 +29,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:model"))
+
     // Room
     implementation(libs.androidx.room)
     implementation(libs.androidx.room.ktx)
