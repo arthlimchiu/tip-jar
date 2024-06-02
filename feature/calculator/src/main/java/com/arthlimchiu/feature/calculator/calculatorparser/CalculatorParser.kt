@@ -1,6 +1,7 @@
 package com.arthlimchiu.feature.calculator.calculatorparser
 
 import java.math.BigDecimal
+import java.math.RoundingMode
 import java.text.DecimalFormat
 
 class CalculatorParser {
@@ -29,5 +30,17 @@ class CalculatorParser {
         } catch (e: Exception) {
             BigDecimal.ZERO
         }
+    }
+
+    fun convertToCents(value: String): Long {
+        val valueInBigDecimal = parseToBigDecimal(value)
+        return convertToCents(valueInBigDecimal)
+    }
+
+    fun convertToCents(value: BigDecimal): Long {
+        return value
+            .setScale(2, RoundingMode.HALF_EVEN)
+            .multiply(BigDecimal(100))
+            .toLong()
     }
 }

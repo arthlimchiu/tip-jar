@@ -1,16 +1,26 @@
 package com.arthlimchiu.feature.calculator
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.arthlimchiu.core.data.PaymentsRepository
+import com.arthlimchiu.core.model.Payment
 import com.arthlimchiu.feature.calculator.calculatorparser.CalculatorParser
 import com.arthlimchiu.feature.calculator.tipcalculator.TipCalculator
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import java.math.BigDecimal
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import javax.inject.Inject
 
-internal class CalculatorViewModel : ViewModel() {
+@HiltViewModel
+internal class CalculatorViewModel @Inject constructor(
+    private val paymentsRepository: PaymentsRepository
+) : ViewModel() {
 
     private val _uiState = MutableStateFlow(UiState())
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
@@ -63,5 +73,17 @@ internal class CalculatorViewModel : ViewModel() {
 
     fun onTakePhotoChecked(takePhoto: Boolean) {
         _uiState.update { state -> state.copy(takePhoto = takePhoto) }
+    }
+
+    fun onSavePaymentClick() {
+        viewModelScope.launch {
+            val payment = Payment(
+                timeStamp = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
+                totalAmountInCents = calculatorFormatter.convertToCents(_uiState.value.amount),
+                totalTipInCents = calculatorFormatter.convertToCents(_uiState.value.totalTip)
+            )
+
+            paymentsRepository.savePayment(payment)
+        }
     }
 }

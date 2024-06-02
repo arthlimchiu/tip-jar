@@ -27,7 +27,7 @@ import com.arthlimchiu.feature.calculator.ui.components.CalculatorTopBar
 @Composable
 internal fun CalculatorRoute(
     viewModel: CalculatorViewModel = hiltViewModel(),
-    onSavedPaymentsClick: () -> Unit
+    onPaymentsHistoryClick: () -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -42,7 +42,8 @@ internal fun CalculatorRoute(
         tipPerPerson = uiState.tipPerPerson,
         takePhoto = uiState.takePhoto,
         onTakePhotoChecked = { takePhoto -> viewModel.onTakePhotoChecked(takePhoto) },
-        onSavedPaymentsClick = onSavedPaymentsClick
+        onSavePaymentClick = { viewModel.onSavePaymentClick() },
+        onPaymentsHistoryClick = onPaymentsHistoryClick
     )
 }
 
@@ -58,11 +59,12 @@ internal fun CalculatorScreen(
     tipPerPerson: String,
     takePhoto: Boolean,
     onTakePhotoChecked: (Boolean) -> Unit,
-    onSavedPaymentsClick: () -> Unit
+    onSavePaymentClick: () -> Unit,
+    onPaymentsHistoryClick: () -> Unit
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = { CalculatorTopBar(onSavedPaymentsClick = onSavedPaymentsClick) }
+        topBar = { CalculatorTopBar(onPaymentsHistoryClick = onPaymentsHistoryClick) }
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -105,7 +107,7 @@ internal fun CalculatorScreen(
             )
             TipJarButton(
                 text = "Save Payment",
-                onClick = { /*TODO*/ },
+                onClick = onSavePaymentClick,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 24.dp)
@@ -130,7 +132,8 @@ internal fun CalculatorScreenPreview() {
                 tipPerPerson = "",
                 takePhoto = true,
                 onTakePhotoChecked = {},
-                onSavedPaymentsClick = {}
+                onSavePaymentClick = {},
+                onPaymentsHistoryClick = {}
             )
         }
     }

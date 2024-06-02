@@ -6,15 +6,14 @@ import com.arthlimchiu.core.model.Payment
 fun PaymentEntity.asExternal(): Payment = Payment(
     id = id,
     timeStamp = timeStamp,
-    totalAmount = totalAmount,
-    totalTip = totalTip,
+    totalAmountInCents = totalAmountInCents,
+    totalTipInCents = totalTipInCents,
     imgPath = imgPath
 )
 
 fun Payment.asEntity(): PaymentEntity = PaymentEntity(
-    id = id,
     timeStamp = timeStamp,
-    totalAmount = totalAmount,
-    totalTip = totalTip,
+    totalAmountInCents = totalAmountInCents,
+    totalTipInCents = totalTipInCents,
     imgPath = imgPath
 )

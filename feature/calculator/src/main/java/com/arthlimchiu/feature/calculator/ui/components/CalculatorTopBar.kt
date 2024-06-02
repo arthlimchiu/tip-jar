@@ -15,7 +15,7 @@ import com.arthlimchiu.core.ui.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun CalculatorTopBar(onSavedPaymentsClick: () -> Unit) {
+internal fun CalculatorTopBar(onPaymentsHistoryClick: () -> Unit) {
     CenterAlignedTopAppBar(
         title = {
             Image(
@@ -25,7 +25,7 @@ internal fun CalculatorTopBar(onSavedPaymentsClick: () -> Unit) {
             )
         },
         actions = {
-            IconButton(onClick = { onSavedPaymentsClick() }) {
+            IconButton(onClick = { onPaymentsHistoryClick() }) {
                 Icon(
                     modifier = Modifier.size(24.dp),
                     painter = painterResource(R.drawable.ic_history),

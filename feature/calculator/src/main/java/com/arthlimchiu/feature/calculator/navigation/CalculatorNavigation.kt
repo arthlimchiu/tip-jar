@@ -11,6 +11,6 @@ fun NavController.navigateToCalculator() = navigate(CALCULATOR_ROUTE)
 
 fun NavGraphBuilder.calculatorScreen(onSavedPaymentsClick: () -> Unit) {
     composable(CALCULATOR_ROUTE) {
-        CalculatorRoute(onSavedPaymentsClick = onSavedPaymentsClick)
+        CalculatorRoute(onPaymentsHistoryClick = onSavedPaymentsClick)
     }
 }
