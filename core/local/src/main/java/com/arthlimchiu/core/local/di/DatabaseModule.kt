@@ -2,6 +2,7 @@ package com.arthlimchiu.core.local.di
 
 import android.content.Context
 import com.arthlimchiu.core.local.TipDatabase
+import com.arthlimchiu.core.local.dao.PaymentDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,4 +20,7 @@ object DatabaseModule {
     fun providesTipDatabase(@ApplicationContext context: Context): TipDatabase {
         return TipDatabase.getInstance(context)
     }
+
+    @Provides
+    fun providesPaymentDao(database: TipDatabase): PaymentDao = database.paymentDao()
 }
