@@ -11,6 +11,9 @@ fun BigDecimal.convertToCents(): Long {
         .toLong()
 }
 
-fun Long.parseCentsToString(): String {
-    return this.toBigDecimal().divide(BigDecimal(100)).toPlainString()
+fun Long.parseCentsToBigDecimal(): BigDecimal {
+    return this
+        .toBigDecimal()
+        .setScale(DEFAULT_DECIMAL_PLACES, RoundingMode.HALF_EVEN)
+        .divide(BigDecimal(100))
 }

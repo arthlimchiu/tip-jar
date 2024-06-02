@@ -2,6 +2,7 @@ package com.arthlimchiu.feature.savedpayments
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -12,6 +13,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arthlimchiu.core.model.Payment
 import com.arthlimchiu.feature.savedpayments.ui.components.PaymentItem
 import com.arthlimchiu.feature.savedpayments.ui.components.TopBar
+import com.arthlimchiu.utils.bigdecimal.ext.parseBigDecimalToString
+import com.arthlimchiu.utils.currency.ext.parseCentsToBigDecimal
+import com.arthlimchiu.utils.date.ext.formatDateString
 
 @Composable
 internal fun SavedPaymentsRoute(
@@ -41,14 +45,12 @@ internal fun SavedPaymentsScreen(
                 .padding(innerPadding)
                 .padding(top = 16.dp)
         ) {
-            repeat(20) {
-                item {
-                    PaymentItem(
-                        date = "2021 January 21",
-                        totalAmount = "$205.23",
-                        totalTip = "Tip: $20.52"
-                    )
-                }
+            items(payments, key = { payment -> payment.id }) { payment ->
+                PaymentItem(
+                    date = payment.timeStamp.formatDateString(),
+                    totalAmount = "$${payment.totalAmountInCents.parseCentsToBigDecimal().parseBigDecimalToString()}",
+                    totalTip = "Tip: $${payment.totalTipInCents.parseCentsToBigDecimal().parseBigDecimalToString()}"
+                )
             }
         }
     }
