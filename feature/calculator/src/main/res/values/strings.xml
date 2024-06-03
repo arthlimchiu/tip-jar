@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_amount_section">Enter amount</string>
+    <string name="label_people_count_section">How many people?</string>
+    <string name="label_tip_percent_section">% TIP</string>
+    <string name="label_total_tip">Total Tip</string>
+    <string name="label_per_person">Per Person</string>
+    <string name="btn_save_payment">Save Payment</string>
+    <string name="placeholder_amount_section">100.00</string>
+    <string name="currency_dollar">$</string>
+</resources>

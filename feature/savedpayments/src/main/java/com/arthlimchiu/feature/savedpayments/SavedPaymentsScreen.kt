@@ -10,6 +10,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arthlimchiu.core.model.Payment
@@ -52,8 +53,14 @@ internal fun SavedPaymentsScreen(
             items(payments, key = { payment -> payment.id }) { payment ->
                 PaymentItem(
                     date = payment.timeStamp.formatDateString(),
-                    totalAmount = "$${payment.totalAmountInCents.parseCentsToBigDecimal().parseBigDecimalToString()}",
-                    totalTip = "Tip: $${payment.totalTipInCents.parseCentsToBigDecimal().parseBigDecimalToString()}",
+                    totalAmount = stringResource(
+                        com.arthlimchiu.core.ui.R.string.dollar_amount,
+                        payment.totalAmountInCents.parseCentsToBigDecimal().parseBigDecimalToString()
+                    ),
+                    totalTip = stringResource(
+                        R.string.total_tip,
+                        payment.totalTipInCents.parseCentsToBigDecimal().parseBigDecimalToString()
+                    ),
                     imgUriPath = payment.imgPath,
                     onClick = {
                         paymentClicked = payment
@@ -68,8 +75,14 @@ internal fun SavedPaymentsScreen(
             paymentClicked?.let { payment ->
                 ReceiptDialog(
                     date = payment.timeStamp.formatDateString(),
-                    totalAmount = "$${payment.totalAmountInCents.parseCentsToBigDecimal().parseBigDecimalToString()}",
-                    totalTip = "Tip: $${payment.totalTipInCents.parseCentsToBigDecimal().parseBigDecimalToString()}",
+                    totalAmount = stringResource(
+                        com.arthlimchiu.core.ui.R.string.dollar_amount,
+                        payment.totalAmountInCents.parseCentsToBigDecimal().parseBigDecimalToString()
+                    ),
+                    totalTip = stringResource(
+                        R.string.total_tip,
+                        payment.totalTipInCents.parseCentsToBigDecimal().parseBigDecimalToString()
+                    ),
                     imgUriPath = payment.imgPath,
                     onDismissRequest = { showDialog = false }
                 )

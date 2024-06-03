@@ -13,6 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
@@ -20,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arthlimchiu.core.ui.components.TipJarTextField
 import com.arthlimchiu.core.ui.theme.TipJarTheme
+import com.arthlimchiu.feature.calculator.R
 
 @Composable
 internal fun AmountSection(
@@ -31,7 +33,7 @@ internal fun AmountSection(
 
     Column(modifier = modifier) {
         Text(
-            text = "Enter amount",
+            text = stringResource(R.string.label_amount_section),
             style = MaterialTheme.typography.bodyLarge
         )
 
@@ -50,8 +52,8 @@ internal fun AmountSection(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp),
-            placeholder = "100.00",
-            prefix = "$",
+            placeholder = stringResource(R.string.placeholder_amount_section),
+            prefix = stringResource(R.string.currency_dollar),
             textStyle = MaterialTheme.typography.displaySmall.copy(textAlign = TextAlign.Center),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             singleLine = true

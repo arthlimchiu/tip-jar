@@ -10,9 +10,11 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arthlimchiu.core.ui.theme.TipJarTheme
+import com.arthlimchiu.feature.calculator.R
 
 @Composable
 internal fun TipBreakdownSection(
@@ -26,10 +28,13 @@ internal fun TipBreakdownSection(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Total Tip",
+                text = stringResource(R.string.label_total_tip),
                 style = MaterialTheme.typography.bodyLarge
             )
-            Text("$$totalTip")
+            Text(
+                text = stringResource(com.arthlimchiu.core.ui.R.string.dollar_amount, totalTip),
+                style = MaterialTheme.typography.bodyLarge
+            )
         }
         Row(
             modifier = Modifier
@@ -38,11 +43,11 @@ internal fun TipBreakdownSection(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Per Person",
+                text = stringResource(R.string.label_per_person),
                 style = MaterialTheme.typography.titleLarge
             )
             Text(
-                text = "$$tipPerPerson",
+                text = stringResource(com.arthlimchiu.core.ui.R.string.dollar_amount, tipPerPerson),
                 style = MaterialTheme.typography.titleLarge
             )
         }

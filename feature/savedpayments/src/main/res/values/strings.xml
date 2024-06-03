@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title">SAVED PAYMENTS</string>
+    <string name="total_tip">Tip: $%1$s</string>
+</resources>
