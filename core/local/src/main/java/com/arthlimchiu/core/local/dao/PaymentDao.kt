@@ -14,4 +14,7 @@ interface PaymentDao {
 
     @Insert
     suspend fun insertPayment(payment: PaymentEntity)
+
+    @Query("DELETE FROM payment WHERE id == :id")
+    suspend fun deletePayment(id: Long)
 }

@@ -19,4 +19,6 @@ class PaymentsLocalSourceImpl @Inject constructor(
         }
 
     override suspend fun savePayment(payment: Payment) = paymentDao.insertPayment(payment.asEntity())
+
+    override suspend fun deletePayment(id: Long) = paymentDao.deletePayment(id)
 }

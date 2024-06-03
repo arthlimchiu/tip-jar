@@ -21,4 +21,8 @@ class PaymentsRepositoryImpl @Inject constructor(
     override suspend fun savePayment(payment: Payment) = withContext(ioDispatcher) {
         localSource.savePayment(payment)
     }
+
+    override suspend fun deletePayment(id: Long) = withContext(ioDispatcher) {
+        localSource.deletePayment(id)
+    }
 }

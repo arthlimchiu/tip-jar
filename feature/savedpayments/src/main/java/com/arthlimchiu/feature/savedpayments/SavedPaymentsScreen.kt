@@ -30,14 +30,16 @@ internal fun SavedPaymentsRoute(
 
     SavedPaymentsScreen(
         payments = uiState.payments,
-        onBackClick = onBackClick
+        onBackClick = onBackClick,
+        onDeletePayment = { paymentId -> viewModel.deletePayment(paymentId) }
     )
 }
 
 @Composable
 internal fun SavedPaymentsScreen(
     payments: List<Payment>,
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
+    onDeletePayment: (Long) -> Unit
 ) {
     var showDialog by remember { mutableStateOf(false) }
     var paymentClicked by remember { mutableStateOf<Payment?>(null) }
@@ -47,11 +49,7 @@ internal fun SavedPaymentsScreen(
             TopBar(onBackClick = onBackClick)
         }
     ) { innerPadding ->
-        LazyColumn(
-            modifier = Modifier
-                .padding(innerPadding)
-                .padding(top = 16.dp)
-        ) {
+        LazyColumn(modifier = Modifier.padding(innerPadding)) {
             items(payments, key = { payment -> payment.id }) { payment ->
                 PaymentItem(
                     date = payment.timeStamp.formatDateString(),
@@ -61,7 +59,8 @@ internal fun SavedPaymentsScreen(
                     onClick = {
                         paymentClicked = payment
                         showDialog = true
-                    }
+                    },
+                    onDelete = { onDeletePayment(payment.id) }
                 )
             }
         }

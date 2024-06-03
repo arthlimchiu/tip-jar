@@ -30,4 +30,10 @@ internal class SavedPaymentsViewModel @Inject constructor(
                 }
         }
     }
+
+    fun deletePayment(paymentId: Long) {
+        viewModelScope.launch {
+            paymentsRepository.deletePayment(paymentId)
+        }
+    }
 }
