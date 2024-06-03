@@ -2,6 +2,13 @@
 
 A tip calculator app which showcases Jetpack Compose, Compose Navigation, Multi-Module Modularization, and MVVM Architecture
 
+## Screenshots
+
+![](images/sample_screen_1.png)
+![](images/sample_screen_2.png)
+![](images/sample_screen_3.png)
+![](images/sample_screen_4.png)
+
 ## Using AI to Improve My Workflow
 
 ### AI-Based Code Completion
