@@ -1,53 +1,47 @@
 # TipJar
-Android Coding Assignment
 
-Please follow the instructions below to complete this portion of the interview. 
-We expect the assignment to be completed within 1 week, but if you need an extension or have any questions regarding the assignment, please notify your Bitcoin.com hiring contact. 
+A tip calculator app which showcases Jetpack Compose, Compose Navigation, Multi-Module Modularization, and MVVM Architecture
 
+## Using AI to Improve My Workflow
 
-## Prerequisites:
+### AI-Based Code Completion
 
-1. Android Studio (https://developer.android.com/studio)
-2. Git - For source control and to submit your solution to a your own **private** repo (https://git-scm.com/downloads) 
-        
-## Instructions
+Using Gemini's AI-based inline code completions (Settings -> Tools -> Gemini), I'm able to autocomplete blocks of code which speeds up my workflow.
 
-- Clone this repo locally using git clone
-- Implement the following functionality and designs as specified: https://www.figma.com/file/Wjc3WG4kH8IFooV2DLv29v/TipJar?node-id=0%3A1
-- Feel free to export any image resources you may require.
-- It is not mandatory that you keep the project structure.
+![](images/ai_completion_1.png)
+![](images/ai_completion_2.png)
+![](images/ai_completion_3.png)
 
-Once you have completed the assignment, push the code up to a new private repo and grant access to the following email addresses for code review 
+Using this tool as a foundation of my workflow allows me to complete large blocks of code and just do some minor revisions.
 
-        - jonathan@bitcoin.com
-        - brendon@bitcoin.com    
-        - mahdi@bitcoin.com
-        - minh@bitcoin.com
-        - percival@bitcoin.com
-        
-***Then notify your Bitcoin.com hiring contact with a link to your private repo.***
+### Heavy Usage
 
+The part where I used AI heavily the most is using Gemini, Android Studio's newest AI coding companion.
 
-## Requirements
+I'm able to ask questions and it's able to come up with answers in the **context** of my project.
 
-- Use MVVM architectural design
-- Use Hilt Dependency Injection (Dagger2 or Koin is acceptable as well)
-- Use Jetpack compose for your project
-- Some of the libraries in this template are outdated. Please update and modernize the components as you see fit. 
-- Write tests for the models you have created
-- Include a text file summarising how you used AI to complete the assignment. Identify parts of the code where you used AI heavily, and others where you used it lightly.
-- Your project should be able to run
+#### Gemini Expectations
 
-## Bonus
-    
-1. Implement Delete and Search Receipts functionality
-2. Change currency functonality
-3. Use AI image processing to parse numbers from reciepts
-4. Animations or any UI elements to spice up the app. (Go wild!)
+If you're using it expecting it to be 100% accurate then you might have a hard time. There are times where the methods/functions suggested doesn't exist.
 
+If you're asking for large blocks of code, don't just copy and paste. As it might not run as you expected.
 
-***Feel free to contact us if you need further requirement clarification*** 
+Where it helps is to come up with blocks of code and then pick some parts of it or gain an understanding based from the answer (aha moments).
 
-We look forward to receiving your submission.
+I see this tool as an **extension** of your skillset and **NOT** as a replacement. You will find value in this tool if you have knowledge/experience about Android Development and you're familiar with navigating the documentation and API references to cross-check the answers provided by Gemini or come up with your own answers faster than not having something to start with.
 
-Good Luck
+### Heavy Usage #1
+Creating a custom inner shadow modifier for the custom textfields in the calculator screen.
+![](images/gemini_1.png)
+
+### Heavy Usage #2
+Creating a circle background instead of a circle border so that the shape will not expand. Used this on the plus(+) and minus(-) buttons in the "How many people?" section
+![](images/gemini_2.png)
+
+### Heavy Usage #3
+Used what I found in this Gemini answer to further improve the text field experience in Calculator screen especially when it's formatted behind the scenes.
+![](images/gemini_3.png)
+
+### Heavy Usage #4
+Used this answer to understand how gradient is created in Jetpack Compose and applied to the orange button in Calculator screen.
+![](images/gemini_4.png)

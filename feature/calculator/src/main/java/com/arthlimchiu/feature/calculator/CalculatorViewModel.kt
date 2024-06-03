@@ -82,6 +82,6 @@ internal class CalculatorViewModel @Inject constructor(
     }
 
     private fun onPaymentSaved() {
-        _uiState.value = UiState()
+        _uiState.update { UiState() }
     }
 }

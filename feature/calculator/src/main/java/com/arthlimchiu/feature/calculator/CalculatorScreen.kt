@@ -90,6 +90,7 @@ internal fun CalculatorRoute(
                 permissionLauncher.launch(Manifest.permission.CAMERA)
             } else {
                 viewModel.savePayment()
+                onPaymentsHistoryClick()
             }
         },
         onPaymentsHistoryClick = onPaymentsHistoryClick,
