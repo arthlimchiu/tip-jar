@@ -39,16 +39,20 @@ I see this tool as an **extension** of your skillset and **NOT** as a replacemen
 
 ### Heavy Usage #1
 Creating a custom inner shadow modifier for the custom textfields in the calculator screen.
+
 ![](images/gemini_1.png)
 
 ### Heavy Usage #2
-Creating a circle background instead of a circle border so that the shape will not expand. Used this on the plus(+) and minus(-) buttons in the "How many people?" section
+Creating a circle background instead of a circle border so that the shape will not expand. Used this on the plus(+) and minus(-) buttons in the "How many people?" section.
+
 ![](images/gemini_2.png)
 
 ### Heavy Usage #3
 Used what I found in this Gemini answer to further improve the text field experience in Calculator screen especially when it's formatted behind the scenes.
+
 ![](images/gemini_3.png)
 
 ### Heavy Usage #4
 Used this answer to understand how gradient is created in Jetpack Compose and applied to the orange button in Calculator screen.
+
 ![](images/gemini_4.png)
