@@ -165,7 +165,7 @@ internal fun CalculatorScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 24.dp),
-                enabled = amount.isNotBlank()
+                enabled = amount.isNotBlank() && amount.any { it.isDigit() }
             )
         }
     }
